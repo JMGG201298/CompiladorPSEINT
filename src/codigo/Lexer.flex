@@ -3,7 +3,7 @@ import static codigo.Tokens.*;
 %%
 %class Lexer
 %type Tokens
-espacio=[ ,\t,\r,\n]+
+espacio=[ ,\t,\r]+
 L=[a-zA-Z_]+
 D=[0-9]+
 para=[Pp]{1}[Aa]{1}[Rr]{1}[Aa]{1}
@@ -50,6 +50,7 @@ error=.
 %}
 %%
 {espacio} {/*Ignore*/}
+"\n" {lexeme=yytext(); return SL;}
 {para} {lexeme=yytext(); return PRPA;}
 {comentarios} {lexeme=yytext(); return CS;}
 {operadoresRelacion} {lexeme=yytext(); return OR;}
@@ -81,7 +82,7 @@ error=.
 {pCerrado} {lexeme=yytext(); return PCD;}
 {dosPuntos} {lexeme=yytext(); return PC;}
 {finInstrucción} {lexeme=yytext(); return FITN;}
-{conPaso} {lexeme=yytext(); return ID;}
+{conPaso} {lexeme=yytext(); return CPSO;}
 {finAlgotirmo} {lexeme=yytext(); return PRFO;}
 {operadoresLogicos} {lexeme=yytext(); return OL;}
 {mientras} {lexeme=yytext(); return PRMS;}

@@ -1,0 +1,26 @@
+package codigo;
+
+import java_cup.runtime.Symbol;
+
+parser code
+{:
+    private Symbol s;
+    
+    public void syntax_error(Symbol s){
+        this.s = s;
+    }
+
+    public Symbol getS(){
+        return this.s;
+}
+:};
+
+terminal SL, PRPA, CS, OR, PRAN, PYC, DP, PRFUN, PRAO, PRER, PRLR,
+        PRSI, PRNO, PRES, PRSN, PRHR, PRDO, PRRR, PRQE, VL, STR,
+        FI, FSN, FMS, FPA, FFN, PRHE, PRSO, PA,PCD, PC, FITN, CPSO,
+        PRFO, OL, PRMS, ID, NF, NE, OAS;
+non terminal Algoritmo, Body;
+
+start with Algoritmo;
+
+Algoritmo ::=  PRAO PRER PRFO;
